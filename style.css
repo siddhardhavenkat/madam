@@ -1,0 +1,232 @@
+ /* General Styles */
+ body {
+     font-family: Arial, sans-serif;
+     margin: 0;
+     padding: 0;
+ }
+
+ header {
+     background-color: #f75daa;
+     color: white;
+     padding: 10px 20px;
+     text-align: center;
+ }
+
+ nav ul {
+     list-style: none;
+     display: flex;
+     justify-content: center;
+     gap: 20px;
+     margin: 0;
+     padding: 10px 0;
+     background: black;
+ }
+
+ nav ul li a {
+     color: white;
+     text-decoration: none;
+     font-weight: bold;
+     cursor: pointer;
+ }
+
+ section {
+     display: none;
+     padding: 20px;
+ }
+
+ section.active {
+     display: block;
+ }
+
+
+ #about p {
+     text-align: center;
+     padding-bottom: 30px;
+ }
+
+ h1,
+ h2 {
+     text-align: center;
+ }
+
+ /* Portfolio Section Styles */
+ #portfolio {
+     background-color: #f9f9f9;
+     padding: 20px 10px;
+ }
+
+ #portfolio h2 {
+     font-size: 2em;
+     margin-bottom: 30px;
+
+ }
+
+ #portfolio h2 {
+     font-size: 2em;
+     margin-bottom: 30px;
+     text-align: center;
+     position: relative;
+     color: #333;
+     animation: blow-effect 3s infinite alternate;
+ }
+
+ @keyframes blow-effect {
+     0% {
+         transform: translateX(0) skewX(0);
+         text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+     }
+
+     25% {
+         transform: translateX(-2px) skewX(-2deg);
+         text-shadow: -2px 2px 5px rgba(100, 100, 255, 0.4);
+     }
+
+     50% {
+         transform: translateX(2px) skewX(2deg);
+         text-shadow: 2px -2px 5px rgba(255, 100, 100, 0.4);
+     }
+
+     75% {
+         transform: translateX(-1px) skewX(-1deg);
+         text-shadow: -1px 1px 5px rgba(100, 255, 100, 0.4);
+     }
+
+     100% {
+         transform: translateX(1px) skewX(1deg);
+         text-shadow: 1px -1px 5px rgba(255, 255, 100, 0.4);
+     }
+ }
+
+ #portfolio .portfolio-item {
+     width: 30%;
+     margin: 10px;
+     display: inline-block;
+     text-align: center;
+     background-color: white;
+     border: 1px solid #ddd;
+     border-radius: 10px;
+     padding: 10px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+ }
+
+ #portfolio .portfolio-item img {
+     width: 100%;
+     height: auto;
+     border-radius: 8px;
+     transition: transform 0.3s ease;
+ }
+
+ #portfolio .portfolio-item h3 {
+     padding-top: 30px;
+
+ }
+
+ #portfolio .portfolio-item:hover {
+     transform: scale(1.05);
+     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+ }
+
+ #portfolio .portfolio-item img:hover {
+     transform: scale(1.1);
+ }
+
+ /* Other section styles */
+ #about img {
+     width: 30%;
+     max-width: 300px;
+     margin: 0 50px;
+     border-radius: 10px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+ }
+
+ #about img:hover {
+     transform: scale(1.1);
+     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+ }
+
+ /* Product Listing Styles */
+ #filters {
+     display: flex;
+     justify-content: center;
+     gap: 20px;
+     margin: 20px 0;
+ }
+
+ #product-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+     gap: 20px;
+ }
+
+ .product {
+     border: 1px solid #ddd;
+     padding: 10px;
+     text-align: center;
+ }
+
+ .product img {
+     width: 100%;
+     height: auto;
+     transition: transform 0.3s ease;
+ }
+
+ .product img:hover {
+     transform: scale(1.1);
+ }
+
+ /* Wishlist (To-Do List) Styles */
+ #wishlist ul {
+     list-style: none;
+     padding: 0;
+ }
+
+ #wishlist ul li {
+     background: #f4f4f4;
+     margin: 5px 0;
+     padding: 5px;
+     border: 1px solid #ddd;
+ }
+
+ /* Contact Form */
+ form {
+     max-width: 500px;
+     margin: 0 auto;
+ }
+
+ form input,
+ form textarea,
+ form button {
+     display: block;
+     width: 100%;
+     margin: 10px 0;
+     padding: 10px;
+ }
+
+ footer {
+     text-align: center;
+     padding: 10px;
+     background: #5183e0;
+     color: white;
+ }
+
+ #total-price {
+     font-size: 18px;
+     font-weight: bold;
+     text-align: center;
+     margin-top: 20px;
+ }
+
+ #clear-wishlist-btn {
+     margin-top: 20px;
+     padding: 10px 20px;
+     background-color: #f75daa;
+     color: white;
+     border: none;
+     cursor: pointer;
+ }
+
+ #clear-wishlist-btn:hover {
+     background-color: #d66e95;
+ }
