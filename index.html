@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Womens Online Shopping</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Womens Online Shopping</h1>
+        <p>Your ultimate destination for trendy Womens fashion and lifestyle products.</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a onclick="showSection('about')">About</a></li>
+            <li><a onclick="showSection('portfolio')">Portfolio</a></li>
+            <li><a onclick="showSection('products')">Products</a></li>
+            <li><a onclick="showSection('wishlist')">Wishlist</a></li>
+            <li><a onclick="showSection('contact')">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about" class="active">
+        <h1>About Us</h1>
+        <p>Welcome to our store! Discover a wide range of Womens fashion, from sharp suits to casual wear, crafted to
+            elevate your style.</p>
+        <img src="women1.jpg" alt="Men's Fashion 1">
+        <img src="women2.jpg" alt="Men's Fashion 2">
+        <img src="women3.jpg" alt="Men's Fashion 3">
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h2>Our Portfolio</h2>
+        <div class="portfolio-item">
+            <img src="women4.jpg" alt="Portfolio 1">
+            <h3>Formal Look</h3>
+            <p>Showcasing a modern formal collection.</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="women5.jpg" alt="Portfolio 2">
+            <h3>Casual Style</h3>
+            <p>Comfortable yet stylish casual wear.</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="women8.jpg" alt="Portfolio 2">
+            <h3>Party wear</h3>
+            <p>comfortable and attractive Party wear</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products">
+        <h2>Our Products</h2>
+        <div id="filters">
+            <label for="category">Category:</label>
+            <select id="category">
+                <option value="all">All</option>
+                <option value="clothing">Clothing</option>
+                <option value="accessories">Accessories</option>
+                <option value="footwear">Footwear</option>
+            </select>
+
+            <label for="price">Sort by Price:</label>
+            <select id="price">
+                <option value="low-to-high">Low to High</option>
+                <option value="high-to-low">High to Low</option>
+            </select>
+        </div>
+
+        <div id="product-grid">
+            <!-- Product Items -->
+            <div class="product" data-category="clothing" data-price="1200">
+                <img src="women6.jpg" alt="Suit">
+                <h3>Elegant Suit</h3>
+                <p>Price: $1200</p>
+                <button class="add-to-wishlist">Add to Wishlist</button>
+            </div>
+            <div class="product" data-category="clothing" data-price="400">
+                <img src="women7.jpg" alt="Casual Shirt">
+                <h3>Casual Shirt</h3>
+                <p>Price: $400</p>
+                <button class="add-to-wishlist">Add to Wishlist</button>
+            </div>
+            <div class="product" data-category="footwear" data-price="800">
+                <img src="foot.jpg" alt="Boots">
+                <h3>Stylish Boots</h3>
+                <p>Price: $800</p>
+                <button class="add-to-wishlist">Add to Wishlist</button>
+            </div>
+            <div class="product" data-category="accessories" data-price="150">
+                <img src="belt.jpg" alt="Belt">
+                <h3>Leather Belt</h3>
+                <p>Price: $150</p>
+                <button class="add-to-wishlist">Add to Wishlist</button>
+            </div>
+            <div class="product" data-category="accessories" data-price="250">
+                <img src="watch.jpg" alt="Watch">
+                <h3>Women's watch</h3>Price: $250</p>
+                <button class="add-to-wishlist">Add to Wishlist</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wishlist Section -->
+    <section id="wishlist">
+        <h2>Your Wishlist</h2>
+        <ul id="wishlist-items"></ul>
+        <div id="total-price">Total Price: $0</div>
+        <button id="clear-wishlist-btn" onclick="clearWishlist()">Clear Wishlist</button>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Womens Online Shopping. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Show the selected section and hide others
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => section.classList.remove('active'));
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) selectedSection.classList.add('active');
+        }
+
+        // Handle Wishlist
+        const wishlistItems = document.getElementById('wishlist-items');
+        const totalPriceElement = document.getElementById('total-price');
+
+        function addToWishlist(productName, productPrice) {
+            const li = document.createElement('li');
+            li.textContent = `${productName} - $${productPrice}`;
+            wishlistItems.appendChild(li);
+            updateTotalPrice();
+        }
+
+        function updateTotalPrice() {
+            let total = 0;
+            wishlistItems.querySelectorAll('li').forEach(item => {
+                const price = parseFloat(item.textContent.split('$')[1]);
+                total += price;
+            });
+            totalPriceElement.textContent = `Total Price: $${total}`;
+        }
+
+        function clearWishlist() {
+            wishlistItems.innerHTML = '';
+            updateTotalPrice();
+        }
+
+        document.querySelectorAll('.add-to-wishlist').forEach(button => {
+            button.addEventListener('click', function () {
+                const product = this.parentElement;
+                const name = product.querySelector('h3').textContent;
+                const price = product.querySelector('p').textContent.split('$')[1];
+                addToWishlist(name, price);
+            });
+        });
+    </script>
+</body>
+
+</html>
